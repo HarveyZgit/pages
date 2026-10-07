@@ -277,7 +277,7 @@
   <p class="kicker">新媒介工作坊 · Week 4</p>
   <h1>HTML 写结构，<br>CSS 写外观。</h1>
   <p class="lede">HTML 规定页面里有什么，以及它们的从属关系。CSS 规定这些内容如何显示。两者分开写。</p>
-  <p class="meta">Dr. Qidong Yun · 北师港浸大联合国际学院 · 本页按学习顺序排列，不按课件页码。浅绿色行标有「看这里」。</p>
+  <p class="meta">Dr. Qidong Yun · 北师港浸大联合国际学院 · 浅绿色行标有「看这里」。</p>
 </header>
 <nav>
   <a href="#list">列表</a>
@@ -493,7 +493,6 @@
       <p class="mono" style="font-size:18px;margin:0">h1 { color: blue; font-size: 24px; }</p>
       <p class="meta">选择器是 h1。color、font-size 是属性。blue、24px 是值。</p>
     </div>
-    <p class="note">课件正文示例为 24px。同页示意图有一处写成 12px。此处用 24px。</p>
   </section>
 
   <section id="where">
@@ -505,7 +504,7 @@
     </dl>
     <p>外部样式表的引入写法：</p>
     <pre class="snippet"><span class="tok-pun">&lt;</span><span class="tok-tag">link</span> <span class="tok-attr">rel</span>=<span class="tok-str">"stylesheet"</span> <span class="tok-attr">type</span>=<span class="tok-str">"text/css"</span> <span class="tok-attr">href</span>=<span class="tok-str">"mystyle.css"</span><span class="tok-pun">&gt;</span></pre>
-    <p class="note">本页不能另存 css 文件。下面用内部样式表演示同一效果。课件演示见 <a href="https://www.w3school.com.cn/css/css_jianjie.asp">w3school CSS 简介</a>。</p>
+    <p class="note">下面用内部样式表演示外部样式表的效果。更多见 <a href="https://www.w3school.com.cn/css/css_jianjie.asp">w3school CSS 简介</a>。</p>
     <h3>内联样式</h3>
     <div class="lab">
       <div class="lab-top">
@@ -701,7 +700,7 @@
     </div>
   </section>
 </main>
-<footer>整理自新媒介工作坊 Week 4。优先级表述依照中文教程：内联样式 &gt; 内部样式表 &gt; 外部样式表 &gt; 浏览器默认样式。嵌套列表已按正确结构改写。</footer>
+<footer>整理自新媒介工作坊 Week 4。</footer>
 <script>
 var SOURCES = [
   "https://registry.npmmirror.com/monaco-editor/0.49.0/files/min",
@@ -837,7 +836,7 @@ function bootMonaco(cdn) {
         wrapAttributes: "force"
       }
     });
-    document.getElementById("editor-status").textContent = "标签为蓝色，属性名为褐色，属性值为绿色。浅绿色行标有「看这里」。代码打开时已格式化。";
+    document.getElementById("editor-status").textContent = "标签为蓝色，属性名为褐色，属性值为绿色。浅绿色行标有「看这里」。";
     function formatNow(editor) {
       var action = editor.getAction("editor.action.formatDocument");
       return action ? action.run() : Promise.resolve();
