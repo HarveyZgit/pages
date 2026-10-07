@@ -104,6 +104,7 @@
     margin: 10px 0;
     padding: 12px 14px;
     overflow-x: auto;
+    overscroll-behavior: contain;
     border: 1px solid var(--line);
     border-radius: 12px;
     background: #fbfaf6;
@@ -153,7 +154,11 @@
     font-size: 14px;
     cursor: pointer;
   }
-  .editor { height: 260px; border-bottom: 1px solid var(--line); }
+  .editor {
+    height: 260px;
+    border-bottom: 1px solid var(--line);
+    overscroll-behavior: contain;
+  }
   textarea.fallback {
     display: block;
     width: 100%;
@@ -166,8 +171,38 @@
     font-family: ui-monospace, Menlo, Consolas, monospace;
     font-size: 16px;
     line-height: 1.45;
+    overscroll-behavior: contain;
   }
   iframe.preview { display: block; width: 100%; min-height: 140px; border: 0; background: #fff; }
+  .lab:fullscreen,
+  .lab:-webkit-full-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    background: var(--card);
+  }
+  .lab:fullscreen .lab-top,
+  .lab:-webkit-full-screen .lab-top { flex: 0 0 auto; }
+  .lab:fullscreen .editor,
+  .lab:-webkit-full-screen .editor,
+  .lab:fullscreen textarea.fallback,
+  .lab:-webkit-full-screen textarea.fallback {
+    flex: 1 1 auto;
+    height: auto !important;
+    min-height: 0;
+    border-bottom: 1px solid var(--line);
+    resize: none;
+  }
+  .lab:fullscreen iframe.preview,
+  .lab:-webkit-full-screen iframe.preview {
+    flex: 0 0 auto;
+    height: 32vh !important;
+    max-height: 40vh;
+    min-height: 140px;
+  }
   .status { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
   footer { padding: 8px 16px 28px; color: var(--muted); font-size: 13px; text-align: center; }
   .wk-focus { background: rgba(62, 106, 80, .16); }
@@ -318,7 +353,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：ol 在 Tea 的 li 内部</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="列表预览" sandbox="allow-same-origin"></iframe>
@@ -362,7 +397,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：span 包住需要单独设样式的词</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="容器预览" sandbox="allow-same-origin"></iframe>
@@ -403,7 +438,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：id 各不相同，class 可以相同</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="命名预览" sandbox="allow-same-origin"></iframe>
@@ -457,7 +492,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：style 属性只作用于这一段</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="内联样式预览" sandbox="allow-same-origin"></iframe>
@@ -471,7 +506,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：规则写在 head 的 style 中</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="内部样式表预览" sandbox="allow-same-origin"></iframe>
@@ -512,7 +547,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：删去内联样式后，内部样式表生效</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="优先级预览" sandbox="allow-same-origin"></iframe>
@@ -537,7 +572,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：# 只选一个，. 选一组</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="选择器预览" sandbox="allow-same-origin"></iframe>
@@ -571,7 +606,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>重点：color、text-align、font-family、font-size</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor"></div>
       <iframe class="preview" title="属性预览" sandbox="allow-same-origin"></iframe>
@@ -604,7 +639,7 @@
     <div class="lab">
       <div class="lab-top">
         <span>整段可改。输入后下方立即更新</span>
-        <div class="btns"><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
+        <div class="btns"><button type="button" class="fs">全屏</button><button type="button" class="fmt">格式化</button><button type="button" class="reset">还原</button></div>
       </div>
       <div class="editor" style="height:320px"></div>
       <iframe class="preview" title="综合预览" sandbox="allow-same-origin"></iframe>
@@ -678,6 +713,38 @@ function mark(editor) {
   });
   editor.__dec = editor.deltaDecorations(editor.__dec || [], decs);
 }
+function containWheel(el) {
+  el.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (el.tagName === "TEXTAREA") el.scrollTop += e.deltaY;
+  }, { passive: false });
+}
+function isLabFullscreen(lab) {
+  return document.fullscreenElement === lab || document.webkitFullscreenElement === lab;
+}
+function requestLabFullscreen(lab) {
+  var req = lab.requestFullscreen || lab.webkitRequestFullscreen;
+  if (req) req.call(lab);
+}
+function exitLabFullscreen() {
+  var ex = document.exitFullscreen || document.webkitExitFullscreen;
+  if (ex) ex.call(document);
+}
+function wireFullscreen(lab, onLayout) {
+  var btn = lab.querySelector(".fs");
+  if (!btn) return;
+  function sync() {
+    btn.textContent = isLabFullscreen(lab) ? "退出全屏" : "全屏";
+    if (onLayout) setTimeout(onLayout, 60);
+  }
+  btn.addEventListener("click", function () {
+    if (isLabFullscreen(lab)) exitLabFullscreen();
+    else requestLabFullscreen(lab);
+  });
+  document.addEventListener("fullscreenchange", sync);
+  document.addEventListener("webkitfullscreenchange", sync);
+}
 function bootTextarea() {
   if (booted) return;
   booted = true;
@@ -688,6 +755,8 @@ function bootTextarea() {
     ta.className = "fallback";
     ta.value = starterOf(lab);
     box.replaceWith(ta);
+    containWheel(ta);
+    wireFullscreen(lab);
     var render = function () { preview(lab, ta.value); };
     ta.addEventListener("input", render);
     lab.querySelector(".reset").addEventListener("click", function () { ta.value = starterOf(lab); render(); });
@@ -740,7 +809,8 @@ function bootMonaco(cdn) {
     }
     document.querySelectorAll(".lab").forEach(function (lab) {
       var start = starterOf(lab);
-      var editor = monaco.editor.create(lab.querySelector(".editor"), {
+      var box = lab.querySelector(".editor");
+      var editor = monaco.editor.create(box, {
         value: start,
         language: "html",
         theme: "week4",
@@ -753,10 +823,12 @@ function bootMonaco(cdn) {
         tabSize: 2,
         insertSpaces: true,
         padding: { top: 10, bottom: 10 },
-        scrollbar: { alwaysConsumeMouseWheel: false },
+        scrollbar: { alwaysConsumeMouseWheel: true },
         overviewRulerLanes: 0,
         formatOnPaste: true
       });
+      containWheel(box);
+      wireFullscreen(lab, function () { editor.layout(); });
       var render = function () { preview(lab, editor.getValue()); mark(editor); };
       editor.onDidChangeModelContent(render);
       editor.onDidPaste(function () { setTimeout(function () { formatNow(editor).then(render); }, 40); });
