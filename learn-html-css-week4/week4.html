@@ -78,6 +78,12 @@
   }
   dl.spec dt { color: var(--muted); font-size: 14px; }
   dl.spec dd { margin: 0; }
+  dl.spec dd .ex { display: block; margin-top: 6px; font-size: 14px; line-height: 1.55; }
+  dl.spec dd ul {
+    margin: 8px 0 0;
+    padding-left: 1.25em;
+  }
+  dl.spec dd li { margin: 4px 0; }
   .note {
     margin: 10px 0;
     padding: 10px 12px;
@@ -481,9 +487,9 @@
   <section id="where">
     <h2>5. 样式写在三处</h2>
     <dl class="spec">
-      <div><dt>内联样式</dt><dd>写在元素的 <code>style</code> 属性中。只作用于该元素。表现和内容写在一起，适合只用一次。</dd></div>
-      <div><dt>内部样式表</dt><dd>写在 <code>head</code> 的 <code>style</code> 元素中。只作用于本页。</dd></div>
-      <div><dt>外部样式表</dt><dd>写在独立的 css 文件中，用 <code>link</code> 引入。可供多页共用。改一个文件，各页一起变。</dd></div>
+      <div><dt>内联样式</dt><dd>写在元素的 <code>style</code> 属性中。只作用于该元素。表现和内容写在一起，适合只用一次。<span class="ex">例：<code>&lt;p style="color: red;"&gt;文字&lt;/p&gt;</code></span></dd></div>
+      <div><dt>内部样式表</dt><dd>写在 <code>head</code> 的 <code>style</code> 元素中。只作用于本页。<span class="ex">例：在本页 <code>&lt;head&gt;</code> 里写 <code>&lt;style&gt;p { color: red; }&lt;/style&gt;</code></span></dd></div>
+      <div><dt>外部样式表</dt><dd>写在独立的 css 文件中，用 <code>link</code> 引入。可供多页共用。改一个文件，各页一起变。<span class="ex">例：独立文件 <code>mystyle.css</code>，页面写 <code>&lt;link rel="stylesheet" href="mystyle.css"&gt;</code></span></dd></div>
     </dl>
     <p>外部样式表的引入写法：</p>
     <pre class="snippet"><span class="tok-pun">&lt;</span><span class="tok-tag">link</span> <span class="tok-attr">rel</span>=<span class="tok-str">"stylesheet"</span> <span class="tok-attr">type</span>=<span class="tok-str">"text/css"</span> <span class="tok-attr">href</span>=<span class="tok-str">"mystyle.css"</span><span class="tok-pun">&gt;</span></pre>
@@ -593,7 +599,14 @@
   <section id="prop">
     <h2>8. 本周三个属性</h2>
     <dl class="spec">
-      <div><dt>颜色</dt><dd><code>color</code> 可用颜色名、<code>#</code> 十六进制或 <code>rgb()</code>。<code>red</code>、<code>#ff0000</code>、<code>rgb(255, 0, 0)</code> 是同一种红。也可写 <code>rgb(100%, 0%, 0%)</code>。</dd></div>
+      <div><dt>颜色</dt><dd><code>color</code> 可用多种写法表示同一种红：
+        <ul>
+          <li>颜色名：<code>red</code></li>
+          <li>十六进制：<code>#ff0000</code></li>
+          <li>rgb 数值：<code>rgb(255, 0, 0)</code></li>
+          <li>rgb 百分比：<code>rgb(100%, 0%, 0%)</code></li>
+        </ul>
+      </dd></div>
       <div><dt>对齐</dt><dd><code>text-align</code> 取值 <code>left</code>、<code>center</code>、<code>right</code>、<code>justify</code>。justify 使每行左右两端对齐。</dd></div>
       <div><dt>字体</dt><dd><code>font-family</code> 从左到右依次尝试。<code>font-size</code> 设置字号。课件示例：h1 为 40px，h2 为 30px，p 为 14px。</dd></div>
       <div><dt>背景图</dt><dd><code>background-image</code> 设置背景图像。默认平铺，铺满该元素。</dd></div>
