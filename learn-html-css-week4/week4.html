@@ -132,7 +132,19 @@
     color: #fff;
     font-size: 16px;
   }
-  .rank small { font-size: 13px; opacity: .9; }
+  .rank small {
+    font-size: 12px;
+    opacity: .95;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    text-align: right;
+    max-width: 68%;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  @media (max-width: 640px) {
+    .rank li { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .rank small { max-width: 100%; text-align: left; }
+  }
   .lab {
     margin: 14px 0 8px;
     overflow: hidden;
@@ -544,10 +556,10 @@
       <div><dt>同级</dt><dd>来源相同、选择器相同时，后出现的声明覆盖先出现的声明。</dd></div>
     </dl>
     <ol class="rank">
-      <li style="background:#1a3a5c">内联样式<small>元素的 style 属性</small></li>
-      <li style="background:#3e6a50">内部样式表<small>head 中的 style</small></li>
-      <li style="background:#8eaf98;color:#1c2b24">外部样式表<small>独立 css 文件</small></li>
-      <li style="background:#d5ddd8;color:#1c2b24">浏览器默认样式<small>未写规则时使用</small></li>
+      <li style="background:#1a3a5c">内联样式<small>&lt;p style="color: red;"&gt;…&lt;/p&gt;</small></li>
+      <li style="background:#3e6a50">内部样式表<small>&lt;style&gt;p { color: green; }&lt;/style&gt;</small></li>
+      <li style="background:#8eaf98;color:#1c2b24">外部样式表<small>&lt;link rel="stylesheet" href="mystyle.css"&gt;</small></li>
+      <li style="background:#d5ddd8;color:#1c2b24">浏览器默认样式<small>不写任何 style / link 时的默认外观</small></li>
     </ol>
     <p class="note">上表按优先级从高到低排列。id 选择器比 class 选择器、元素选择器更具体。本周不展开计算。</p>
     <div class="lab">
