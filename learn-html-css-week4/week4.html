@@ -710,15 +710,25 @@ var SOURCES = [
 var booted = false;
 function wrap(html) {
   if (/<\s*html[\s>]/i.test(html)) return html;
-  return "<!DOCTYPE html><html><head><meta charset='utf-8'><style>body{font-family:Georgia,'Songti SC',serif;padding:16px;line-height:1.5;color:#1c2b24;margin:0}</style></head><body>" + html + "</body></html>";
+  return "<!DOCTYPE html><html><head><meta charset='utf-8'><style>html,body{height:auto;overflow:hidden;}body{font-family:Georgia,'Songti SC',serif;padding:16px;line-height:1.5;color:#1c2b24;margin:0}</style></head><body>" + html + "</body></html>";
 }
 function preview(lab, text) {
   var frame = lab.querySelector("iframe");
   frame.srcdoc = wrap(text);
   frame.onload = function () {
     try {
-      var h = frame.contentDocument.documentElement.scrollHeight;
-      frame.style.height = Math.max(140, h + 8) + "px";
+      frame.style.height = "0px";
+      var doc = frame.contentDocument;
+      var body = doc.body;
+      var root = doc.documentElement;
+      var h = Math.max(
+        body ? body.scrollHeight : 0,
+        body ? body.offsetHeight : 0,
+        root ? root.scrollHeight : 0,
+        root ? root.offsetHeight : 0
+      );
+      var maxH = Math.max(800, Math.floor(window.innerHeight * 0.7));
+      frame.style.height = Math.max(140, Math.min(h + 8, maxH)) + "px";
     } catch (e) {}
   };
 }
